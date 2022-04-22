@@ -15,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  ssr: false,
+  ssr: true,
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
