@@ -15,23 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  target: 'server',
-
-  render: {
-    csp: {
-      reportOnly: false,
-      addMeta: true,     // Add CSP meta-tag in addition to the HTTP header
-      unsafeInlineCompatiblity: true,
-      policies: {
-        'script-src': ["'self'", "'strict-dynamic'", 'https:'],
-        'style-src': ["'self'", "'strict-dynamic'", 'https:'],
-        'frame-src': [],
-        'object-src': ["'none'"],
-        'base-uri': ["'self"]
-      }
-    }
-  },
-
+  ssr: false,
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -39,7 +23,10 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
+  helmet: {
+    'Content-Security-Policy': "frame-ancestors 'none';",
+    'X-Frame-Options':"none"
+  },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
   ],
